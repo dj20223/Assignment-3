@@ -1,13 +1,13 @@
 class RedBlackTreeNode {
-    int key;
+    String key;
     String name;
     String category;
     double price;
     RedBlackTreeNode left, right, parent;
     boolean isRed;
 
-    public RedBlackTreeNode(int key, String name, String category, double price) {
-        this.key = key;
+    public RedBlackTreeNode(String key2, String name, String category, double price) {
+        this.key = key2;
         this.name = name;
         this.category = category;
         this.price = price;

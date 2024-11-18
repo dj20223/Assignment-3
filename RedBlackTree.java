@@ -3,12 +3,12 @@ class RedBlackTree {
     private final RedBlackTreeNode nil;
 
     public RedBlackTree() {
-        this.nil = new RedBlackTreeNode(-1, null, null, 0);
+        this.nil = new RedBlackTreeNode(null, null, null, 0);
         this.nil.isRed = false;
         this.root = this.nil;
     }
 
-    public void insert(int key, String name, String category, double price) {
+    public void insert(String key, String name, String category, double price) {
         RedBlackTreeNode newNode = new RedBlackTreeNode(key, name, category, price);
         newNode.left = newNode.right = newNode.parent = nil;
 
@@ -18,9 +18,9 @@ class RedBlackTree {
         // Standard BST insertion
         while (current != nil) {
             parent = current;
-            if (key < current.key) {
+            if (key.compareTo(current.key) < 0) {
                 current = current.left;
-            } else if (key > current.key) {
+            } else if (key.compareTo(current.key) > 0) {
                 current = current.right;
             } else {
                 System.out.println("Error: Product with ID " + key + " already exists.");
@@ -31,7 +31,7 @@ class RedBlackTree {
         newNode.parent = parent;
         if (parent == nil) {
             root = newNode; // Tree was empty
-        } else if (key < parent.key) {
+        } else if (key.compareTo(parent.key) < 0) {
             parent.left = newNode;
         } else {
             parent.right = newNode;
@@ -116,10 +116,10 @@ class RedBlackTree {
         node.parent = temp;
     }
 
-    public RedBlackTreeNode search(int key) {
+    public RedBlackTreeNode search(String key) {
         RedBlackTreeNode current = root;
-        while (current != nil && key != current.key) {
-            if (key < current.key) {
+        while (current != nil && key.compareTo(current.key) != 0) {
+            if (key.compareTo(current.key) < 0) {
                 current = current.left;
             } else {
                 current = current.right;
@@ -136,4 +136,4 @@ class RedBlackTree {
             System.out.println("Product not found.");
         }
     }
-}
+} 
